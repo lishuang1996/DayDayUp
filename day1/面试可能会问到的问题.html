@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        1.webpack
+        最重要的output 出口 entry 入口
+        module 主要是加载一些rule
+        plugins 插件入口， 解决一些loader解决不了的某些编译问题
+        devserver 热服务等
+        mode 环境变量
+        2.常用插件 less scss
+        3.权限的实现
+        4.vue生命周期 虚拟dom diff算法 双向绑定
+        虚拟dom 就是一颗树结构的对象，在vue初始化的时候，会收集依赖 把每个节点保存下来，diff阶段对树的节点所保存的dom作修改
+        const vnode = {
+            id:'app',
+            attr:[],//calss之类的属性
+            el:'',//这里是dom
+            children:[vnode,vnode,vnode,vnode]//子节点
+        }
+        diff算法
+        1.切忌千万别说diff算法能达到最小的性能开销，diff主要是在尽量复用节点，减少了create 创建dom，diff算法是不是最优的解法！！！？ 答案： 不是
+        2.某些时候 手动操作dom都比diff更优
+        3.diff阶段也是比较大的性能开销，为了防止diff性能开销过大，diff是有优化的 复杂度从O(n^3)降低到了O(n),降低了复杂度，肯定就牺牲了 算法的最优解
+        (设计是想diff算法 特别优秀，最优解,但是这样会导致算法本身的复杂度特别高)
+        如何降低复杂度？不可夸层级
+        diff过程是如何进行的？ 首首对比  尾尾对比  首尾对比 尾首对比 
+        双向绑定 
+        双向绑定defineProperty 来实现的数据挟持
+    </script>
+</body>
+
+</html>
