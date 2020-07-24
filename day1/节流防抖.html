@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="djw">
+        点击我
+    </div>
+    <div style="height:9000px">
+
+    </div>
+    <script>
+        let djw = document.getElementById('djw')
+        djw.onclick = Fd(aa,500)
+        //防抖
+        function Fd(fn,time){
+            let FnTime = null
+            return function(){
+                if(FnTime){
+                    clearTimeout(FnTime)
+                }
+                FnTime = setTimeout(fn,time)
+            }
+        }
+        function aa(){
+            console.log(123)
+        }
+        //节流
+        function Jl(fn,time){
+            let FnKey = true
+            return function(){
+                if(!FnKey){
+                    return false
+                }
+                FnKey = false
+                setTimeout(()=>{
+                    fn()
+                    FnKey = true
+                },time)
+            }
+        }
+        window.onscroll = Jl(aa,1000)
+    </script>
+</body>
+</html>

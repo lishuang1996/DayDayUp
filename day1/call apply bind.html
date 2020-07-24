@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var name = '我是你爸爸'
+        var MyObj = {
+            name:'我不是你爸爸',
+            fn1:function(a,b){
+                console.log(this)
+                console.log(this.name)
+                console.log(a)
+                console.log(b)
+            }
+        }
+        var MyObj1 = {
+            name:'我还是是你爸爸',
+        }
+        // arguments此对象大多用来针对同个方法多处调用并且传递参数个数不一样时进行使用。根据arguments的索引来判断执行的方法。
+        // MyObj.fn.call() 手写call函数
+        Function.prototype.Mycall = function(context){
+            context = context || window
+            let arg = [...arguments].slice(1)
+            context['fn'] = this
+            context.fn(...arg)
+            delete context.fn
+        }
+        // MyObj.fn1.Mycall(MyObj1)
+        // MyObj.fn.apply() 手写apply函数 第二个参数为数组
+        Function.prototype.Myapply = function(context){
+            context = context || window
+            let arg = [...arguments][1]||[]
+            context['fn'] = this
+            context.fn(...arg)
+            delete context.fn
+        }
+        // MyObj.fn1.Myapply(MyObj1)
+        Function.prototype.Mybind = function(context){
+            context = context || window
+            let that = this
+            return function(){
+                let arg = [...arguments]||[]
+                context['fn'] = that
+                context.fn(...arg)
+                delete context.fn
+            }
+        }
+        let nFn = MyObj.fn1.Mybind(MyObj1)
+        // nFn(123,999)
+    </script>
+</body>
+</html>

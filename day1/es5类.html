@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.构造函数法
+        function wo(name,age,sex){
+            this.name = name
+            this.age = age
+            this.sex = sex
+        }
+        wo.prototype.maney = 9999
+        wo.prototype.getage = function(){
+            console.log(this.age)
+        }
+        wo.prototype.getsex = function(){
+            console.log(this.sex)
+        }
+        var wo1 = new wo('你爸爸','18','男')
+        // console.log(wo1)
+        // wo1.getage()
+
+        //2.Object.create()法
+        var ni = {
+            name:'傻逼',
+            age:24,
+            sex:'男',
+            getname:function(){
+                console.log(this.name)
+            },
+            setname:function(name){
+                this.name = name
+                console.log(this.name)
+            }
+        }
+        var ni1 = Object.create(ni)
+        ni1.setname('你才是傻逼')
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+1.隐式转换
++ 顺应字符串
+-*/ 顺应数字
+2.闭包（好处，劣出）
+是否存在闭包（只要函数的变量在该函数执行完 没被回收必然存在闭包）
+好处（闭包能保存局部变量 不被污染 具有一定的安全性，闭包能临时缓存你的变量，做一些异步处理）
+劣势（滥用内存泄露）
+回收（引入次数为0）
+3.this指向
+this有哪些引用环境 
+this怎么指（正常情况下this就是谁调用就是谁的）
+<!-- this 的执行环境  简要划分 -->
+    <!-- 函数创建是无法确定this的指向 谁调用this指向谁是比较模糊的概念也是不够准确的 主要看执行上下文 -->
+        // 1：全局
+        // console.log(this)    window
+
+        // 2：函数内部  window调用
+        // function fn() {
+        //     console.log(this) //window
+        // }
+        // fn()
+
+        // 3：对象内
+        // let foo = {
+        //     fn: function() {
+        //         console.log(this)
+        //     }
+        // }
+        // foo.fn() // this指向调用对象foo
+        // let newFn = foo.fn
+        // newFn() //当赋值时 改this并没有指向 这个地方指向的是 window
+
+        // 4：构造函数  构造函数的this将指向 实例对象(本例中的p)
+        //    另加构造函数new发生了什么 
+        // 个人见解: 1 创建新对象  2 this指向该创建对象  3 执行构造函数所有方法  4 return改对象
+        // function person() {
+        //     console.log(this)
+        // }
+        // let p = new person()
+
+        // 5：定时器 一直保持指向window  （合适的时候使用箭头函数 指向父级作用域至关重要的 当然let _this=this 笨办法也是可以的）
+        // setTimeout(() => {
+        //     console.log(this)
+        // }, 0)
+        // foo = {
+        //     fn: function () {
+        //         setTimeout(function fn(){
+        //             console.log(this)
+        //         }, 0)
+        //     }
+        // }
+        // foo.fn()
+
+        // 6：箭头函数  this指向父级作用域
+        // fn = ()=>{
+        //     console.log(this)
+        // }
+        // fn()
+
+        // 7：  事件响应函数的this  ===> 指向事件源
+        // document.getElementById('btn').addEventListener('click', function () {
+        //     console.log(this);
+        // })
+4.深拷贝
+使用递归拷贝（JSON简单但是最好不提）
+5.自我练习 call apply bind（改变this指向） 自己实现 深拷贝递归拷贝法
+6.原型链
+原型分为隐示原型(__proto__)  显示原型(prototype)
+对象只拥有隐示原型(__proto__) 
+方法拥有  隐示原型(__proto__) 和显示原型(prototype)
+实例对象的__proto__ 等于构造该实例的prototype
+constructor(构造器)就是实例对象自己
+7.数组操作方法
+Arr.every(item=>item)全部符合条件 返回值true false
+Arr.some(item=>item)一个符合条件 返回值true false
+排序自己写两种 Math.min Math.max

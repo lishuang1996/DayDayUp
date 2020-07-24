@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let ObjA = {
+      a:{
+        a:2,
+        b:function(){
+          console.log(this.a.a)
+        }
+      },
+      b:function(){
+        console.log(this.a)
+      },
+      c:1,
+      d:[{a:1,b:function(){}},2,3]
+    }
+    //深度复制
+    let DepthCopy = function(data){
+      let A = Array.isArray(data)?new Array:new Object
+      for(let item in data){
+        let B = data[item]
+        A[item] = typeof(B) === 'object'?DepthCopy(B):B
+      }
+      return A
+    } 
+    let a = DepthCopy(ObjA)
+    let NewObjA = JSON.parse(JSON.stringify(ObjA))
+    //NewObjA 无法复制 ObjA下的function
+  </script>
+</body>
+</html>

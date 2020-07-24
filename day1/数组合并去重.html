@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //合并
+        let arrA = [1, 2, 3, 4, 6, 8, {
+            a: 1,
+            b:1
+        }, {
+            a: 1
+        }, {
+            b: 1
+        }]
+        let arrB = [4, 5, 6]
+        let arrc = []
+        //方法一 es6
+        arrc = [...arrA, ...arrB]
+        //方法二 es5
+        // arrc = arrc.concat(arrA,arrB)
+        //去重(去除的是引用地址相同的 {}的引用地址不相同)
+        //方法一
+        arrc = new Set(arrc)
+        //方法二 准备空数组 遍历去重数组 每一个item去对比新数组 如果没有重复就push
+        function unique1(arr){
+            let NewArr = []
+            arr.forEach(item => {
+                if(!NewArr.includes(item)) NewArr.push(item)
+            });
+            console.log(NewArr)
+        }
+        //方法三 filter对比第一个查找到的index第一个查找到的就是
+        function unique2(arr){
+            return arr.filter((item,index,a) => {
+                return a.indexOf(item) === index
+            });
+        }
+        //数组转对象
+        let arrayLike = {
+            '0': 'a',
+            '1': 'b',
+            '2': 'c',
+            length: 3
+        };
+        let arr2 = Array.from(arrayLike);
+        console.log(arr2)
+    </script>
+</body>
+
+</html>

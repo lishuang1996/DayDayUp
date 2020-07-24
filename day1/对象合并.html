@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //合并
+        let objA = {a:1,b:1,fa:function(){}}
+        let objB = {c:1,d:1,fb:function(){}}
+        let objc = {}
+        //方法一
+        // objc = {...objA,...objB}
+        //方法二
+        // objc = Object.assign(objA,objB)
+        console.log(objc)
+    </script>
+</body>
+</html>

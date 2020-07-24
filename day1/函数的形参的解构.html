@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //情况一
+        function sum(obj){
+            console.log(obj)
+        }
+        // sum({n1:10})
+        //情况二
+        function sum1({n1}){
+            console.log(n1)
+        }
+        // sum1({n1:10})
+        //情况三
+        function sum2({n1}){
+            console.log(n1)
+        }
+        // sum2()
+        //情况四
+        function sum3({n1}={}){
+            console.log(n1)
+        }
+        // sum3()
+        //情况五
+        function sum4(...arr){
+            console.log(arr)
+        }
+        // sum4(...[1,2,3,4])
+        //情况六
+        function sum5(num,...arr){
+            console.log(arr)
+        }
+        // sum5(...[1,2,3,4])
+    </script>
+</body>
+</html>

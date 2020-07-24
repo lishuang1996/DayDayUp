@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //原型链
+  let foo = function(){}
+  let foo_ = new foo()
+  let Function = function(){}
+  console.log(foo_)
+  console.log(foo_.__proto__)
+  console.log(foo.prototype === foo_.__proto__)true
+  console.log(foo.__proto__)
+  console.log(Function.__proto__)
+  console.log(Function.__proto__ === foo.__proto__)true
+  
+  </script>
+</body>
+</html>
