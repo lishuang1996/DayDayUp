@@ -7,7 +7,23 @@
 </head>
 <body>
     <script>
-        
+        function person(name,age){
+            this.name = name
+            this.age = age
+            this.showname = function(){
+                console.log('我是' + name)
+            }
+        }
+        function child(){
+            this.temp = person
+            console.log(this.temp)
+            this.temp('你爸爸',24)
+            delete this.temp
+        }
+        var mychild = new child()
+        console.log(child)
+        console.log(mychild)
+        mychild.showname()
     </script>
 </body>
 </html>
